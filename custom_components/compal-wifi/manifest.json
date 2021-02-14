@@ -1,0 +1,12 @@
+{
+  "domain": "compal_wifi",
+  "name": "Compal WiFi",
+  "documentation": "https://github.com/frimtec/hass-compal-wifi",
+  "requirements": [
+    "compal-wifi-switch==1.1.4"
+  ],
+  "issue_tracker": "https://github.com/frimtec/hass-compal-wifi/issues",
+  "codeowners": [
+    "@frimtec"
+  ]
+}
