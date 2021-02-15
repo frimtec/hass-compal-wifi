@@ -1,4 +1,5 @@
 {
   "name": "Compal WiFi",
-  "country": "CH"
+  "country": "CH",
+  "domains": ["switch"]
 }
