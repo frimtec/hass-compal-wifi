@@ -1,4 +1,6 @@
 # Compal WiFi integration for Home Assistant
+[![Build](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml)
+[![Deploy release](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml)
 
 Home Assistant component to switch WiFi of the modem Compal CH7465LG on or off.
 
