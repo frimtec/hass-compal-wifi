@@ -20,7 +20,7 @@ jobs:
       - name: Upload zip
         uses: actions/upload-artifact@v2
         with:
-          name: compal-wifi
+          name: compal_wifi
           path: ./custom_components
 
   black:

@@ -24,7 +24,7 @@ jobs:
       - name: Zip
         run: |
           cd ./custom_components
-          zip compal-wifi.zip -r ./
+          zip compal_wifi.zip -r ./
 
       - name: Upload zip to release
         uses: actions/upload-release-asset@v1
@@ -32,6 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./custom_components/compal-wifi.zip
-          asset_name: compal-wifi.zip
+          asset_path: ./custom_components/compal_wifi.zip
+          asset_name: compal_wifi.zip
           asset_content_type: application/zip
