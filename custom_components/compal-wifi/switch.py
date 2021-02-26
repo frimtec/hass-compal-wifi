@@ -6,7 +6,7 @@ import sys
 
 from homeassistant.helpers.entity import ToggleEntity
 
-from compal_wifi_switch import (Switch, Band, Commands)
+from compal_wifi_switch import Switch, Band, Commands
 
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
 
@@ -29,8 +29,8 @@ DEFAULT_RADIO = "all"
 
 def extract_states(status):
     states = {}
-    for wifi_band in status['wifi']:
-        states[wifi_band['radio']] = wifi_band['enabled']
+    for wifi_band in status["wifi"]:
+        states[wifi_band["radio"]] = wifi_band["enabled"]
     return states
 
 
@@ -45,7 +45,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         config.get(CONF_GUEST_MACS_5G, DEFAULT_GUEST_MACS_5G),
     )
 
-    states = extract_states(Commands.status( config[CONF_HOST], config[CONF_PASSWORD]))
+    states = extract_states(Commands.status(config[CONF_HOST], config[CONF_PASSWORD]))
 
     switches = [
         CompalWifiSwitch(compal_config, Band.BAND_2G, states[Band.BAND_2G.value]),
@@ -82,7 +82,9 @@ class WifiSwitch:
 def switch_wifi(wifi_switch: WifiSwitch, state, band, guest):
     wifi_switch.set_processing_state("on")
 
-    def switch_wifi_blocking(semaphore, _host, _password, _state, _band, _guest, _pause):
+    def switch_wifi_blocking(
+        semaphore, _host, _password, _state, _band, _guest, _pause
+    ):
         semaphore.acquire()
         try:
             Commands.switch(_host, _password, _state, _band, _guest, _pause)
@@ -96,7 +98,15 @@ def switch_wifi(wifi_switch: WifiSwitch, state, band, guest):
     config = wifi_switch.config()
     threading.Thread(
         target=switch_wifi_blocking,
-        args=(config.semaphore, config.host, config.password, state, band, guest, config.pause)
+        args=(
+            config.semaphore,
+            config.host,
+            config.password,
+            state,
+            band,
+            guest,
+            config.pause,
+        ),
     ).start()
 
 
@@ -148,7 +158,6 @@ class CompalWifiSwitch(ToggleEntity, WifiSwitch):
     def device_state_attributes(self):
         """Return device specific state attributes."""
         return {"switch_progress": self._switch_progress}
-
 
     @property
     def icon(self):
