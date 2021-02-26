@@ -39,7 +39,8 @@ jobs:
     needs: [black]
     runs-on: "ubuntu-latest"
     steps:
-      - name: Check out code from GitHub
-        uses: "actions/checkout@v2"
-      - name: Run hassfest
-        uses: home-assistant/actions/hassfest@master
+      - uses: "actions/checkout@v2"
+      - name: HACS validation
+        uses: "hacs/action@main"
+        with:
+          category: "integration"
