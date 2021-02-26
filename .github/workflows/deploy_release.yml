@@ -15,6 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Set version in manifest.json
+        run: |
+          sed -i 's/0.0.0/${{ steps.get_version.outputs.VERSION }}/g' ./custom_components/compal_wifi/manifest.json
+
       - name: Get release
         id: get_release
         uses: bruceadams/get-release@v1.2.2
