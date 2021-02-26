@@ -8,5 +8,6 @@
   "issue_tracker": "https://github.com/frimtec/hass-compal-wifi/issues",
   "codeowners": [
     "@frimtec"
-  ]
+  ],
+  "version": "0.0.0"
 }

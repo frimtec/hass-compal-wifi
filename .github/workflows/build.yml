@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -24,23 +24,31 @@ jobs:
           path: ./custom_components
 
   black:
-    name: Python Code Format Check
+    name: Python code format check
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code from GitHub
-        uses: "actions/checkout@v2"
-      - name: Black Code Format Check
+      - uses: "actions/checkout@v2"
+      - name: Black code format check
         uses: lgeiger/black-action@master
         with:
           args: ". --check --fast --diff"
 
-  validate:
-    name: Check hassfest
+  hassfest:
+    name: Hassfest validation
     needs: [black]
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v2"
-      - name: HACS validation
-        uses: "hacs/action@main"
-        with:
-          category: "integration"
+      - uses: home-assistant/actions/hassfest@master
+
+#
+#  hacs:
+#    name: HACS validation
+#    needs: [black]
+#    runs-on: "ubuntu-latest"
+#    steps:
+#      - uses: "actions/checkout@v2"
+#      - name: HACS validation
+#        uses: "hacs/action@main"
+#        with:
+#          category: "integration"
