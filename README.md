@@ -2,9 +2,10 @@
 [![Build](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml)
 [![Deploy release](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml)
 
+![Icon](images/icon-readme.png) ![WiFi switches!](images/compal-wifi.png)
+
 Home Assistant component to switch WiFi of the modem Compal CH7465LG on or off.
 
-![WiFi switches!](images/compal-wifi.png)
 
 The component is tested with the modem firmware version ```CH7465LG-NCIP-6.15.28-4p8-NOSH```.
 
