@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: compal_wifi
-          path: ./custom_components
+          path: ./custom_components/compal_wifi
 
   black:
     name: Python code format check

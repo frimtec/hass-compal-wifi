@@ -1,5 +1,7 @@
 {
   "name": "Compal WiFi",
   "country": "CH",
-  "domains": ["switch"]
+  "domains": ["switch"],
+  "zip_release": true,
+  "filename": "compal_wifi.zip"
 }

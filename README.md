@@ -15,8 +15,9 @@ The component is tested with the modem firmware version ```CH7465LG-NCIP-6.15.28
 
 1. Using the tool of choice to open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory there, you need to create it.
-3. Download the ZIP archive `compal_wifi.zip` from the [latest release assets](https://github.com/frimtec/hass-compal-wifi/releases/latest).   
-3. Extract the downladed ZIP archive to the directiry `custom_components`.
+3. Create an empty directory `compal_wifi` inside the directory `custom_components`.
+4. Download the ZIP archive `compal_wifi.zip` from the [latest release assets](https://github.com/frimtec/hass-compal-wifi/releases/latest).   
+5. Extract the downladed ZIP archive to the directiry `custom_components/compal_wifi`.
 6. Move on to the configuration in the file `configuration.yaml`.
 7. Restart Home Assistant.
 
