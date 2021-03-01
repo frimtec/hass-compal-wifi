@@ -43,14 +43,13 @@ jobs:
       - uses: "actions/checkout@v2"
       - uses: home-assistant/actions/hassfest@master
 
-#
-#  hacs:
-#    name: HACS validation
-#    needs: [black]
-#    runs-on: "ubuntu-latest"
-#    steps:
-#      - uses: "actions/checkout@v2"
-#      - name: HACS validation
-#        uses: "hacs/action@main"
-#        with:
-#          category: "integration"
+  hacs:
+    name: HACS validation
+    needs: [black]
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: HACS validation
+        uses: "hacs/action@main"
+        with:
+          category: "integration"
