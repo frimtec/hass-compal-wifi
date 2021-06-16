@@ -3,7 +3,8 @@
   "name": "Compal WiFi",
   "documentation": "https://github.com/frimtec/hass-compal-wifi",
   "requirements": [
-    "compal-wifi-switch==1.1.6"
+    "compal-wifi-switch==1.2.0",
+    "compal>=0.4.0"
   ],
   "issue_tracker": "https://github.com/frimtec/hass-compal-wifi/issues",
   "codeowners": [
