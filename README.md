@@ -37,8 +37,7 @@ Key | Type | Required | Description
 --- | ---- | -------- | -----------
 `host` | `string` | `True` | The hostname or IP address of your compal modem, e.g., 192.168.0.1.
 `password` | `string` | `True` | The password for your modems administration account.
-`guest_macs_2g` | `string[]` | `False` | List of guest MAC addresses to enable when switching ON 2G WiFi band. 
-`guest_macs_5g` | `string[]` | `False` | List of guest MAC addresses to enable when switching ON 5G WiFi band.
+`guest` | `bool` | `False` | Enable guest network when switching ON WIFI. 
 `pause` | `int` | `False` | Number of seconds to wait between modem changes (default 60s).
 
 
