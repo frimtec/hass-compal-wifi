@@ -25,9 +25,8 @@ This component is not official, developed, supported or endorsed by Compal.
  
 Add a configuration to your `configuration.yaml` file:
 ``` yaml
-switch:
-  - platform: compal_wifi
-    host: 192.168.0.1
+compal_wifi:
+    host: 192.168.1.1
     password: YOUR_PASSWORD
 ```
 
@@ -39,6 +38,7 @@ Key | Type | Required | Description
 `password` | `string` | `True` | The password for your modems administration account.
 `guest` | `bool` | `False` | Enable guest network when switching ON WIFI. 
 `pause` | `int` | `False` | Number of seconds to wait between modem changes (default 60s).
+`polling_interval` | `int` | `False` | Number of seconds to poll modem state (default 3600s - 1h).
 
 
 ## Platforms
@@ -62,6 +62,17 @@ Name | Values | Description
 ---- | ------ | -----------
 `state` | `on` or `off` | Switch state.
 `switch_progress` | `on`, `off` or `error` | Whether a swich change is in progress or not or `error` if the last switch operation was faulty.
+
+### Sensor
+The componet offers various sensors:
+
+Entity | Description
+---- | -----------
+switch.compal.wifi.modem.model | Modem model
+switch.compal.wifi.modem.hardware Version | Hardware version
+switch.compal.wifi.modem.software Version | Software version
+switch.compal.wifi.modem.operator | Modem operator
+switch.compal.wifi.modem.uptime | Modem uptime
 
 ## Integration
 The integration with the compal modem is done using [compal-wifi-switch](https://github.com/frimtec/compal-wifi-switch).  
