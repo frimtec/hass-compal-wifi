@@ -1,6 +1,7 @@
 """The Compal WiFi component."""
 import threading
 from datetime import datetime
+from datetime import timedelta
 
 from compal_wifi_switch import Commands
 
@@ -19,6 +20,25 @@ DEFAULT_POLLING_INTERVAL = 60 * 60
 
 ATTR_RADIO = "radio"
 DEFAULT_RADIO = "all"
+
+
+def modem_reboot(compal_config):
+    def modem_reboot_blocking():
+        compal_config.semaphore.acquire()
+        try:
+            Commands.reboot(compal_config.host, compal_config.password)
+            return True
+        except:
+            return False
+        finally:
+            compal_config.last_update = compal_config.last_update - timedelta(
+                seconds=compal_config.polling_interval
+            )
+            compal_config.semaphore.release()
+
+    threading.Thread(
+        target=modem_reboot_blocking,
+    ).start()
 
 
 def setup(hass, config):
@@ -41,6 +61,11 @@ def setup(hass, config):
 
     hass.helpers.discovery.load_platform("sensor", DOMAIN, {}, config)
     hass.helpers.discovery.load_platform("switch", DOMAIN, {}, config)
+
+    def handle_reboot(call):
+        modem_reboot(compal_config)
+
+    hass.services.register(DOMAIN, "reboot", handle_reboot)
     return True
 
 

@@ -72,7 +72,17 @@ switch.compal.wifi.modem.model | Modem model
 switch.compal.wifi.modem.hardware Version | Hardware version
 switch.compal.wifi.modem.software Version | Software version
 switch.compal.wifi.modem.operator | Modem operator
+switch.compal.wifi.modem.status | Modem status
 switch.compal.wifi.modem.uptime | Modem uptime
+switch.compal.wifi.modem.telephone.line.1 | State of telephone line 1
+switch.compal.wifi.modem.telephone.line.2 | State of telephone line 2
+
+## Services
+The componet offers the following services:
+
+Name | Description
+---- | -----------
+compal_wifi.reboot | Reboots the modem
 
 ## Integration
 The integration with the compal modem is done using [compal-wifi-switch](https://github.com/frimtec/compal-wifi-switch).  
