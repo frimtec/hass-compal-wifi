@@ -1,0 +1,5 @@
+reboot:
+  # Service name as shown in UI
+  name: Reboot
+  # Description of the service
+  description: Reboots the modem.
