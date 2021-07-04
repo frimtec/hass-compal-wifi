@@ -20,12 +20,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
                 compal_config,
             ),
             ModemSensor(
-                "Compal Wifi Modem Status",
-                compal_config,
-                lambda modem: modem["status"],
-                "mdi:checkbox-marked-circle",
-            ),
-            ModemSensor(
                 "Compal Wifi Modem Model",
                 compal_config,
                 lambda modem: modem["model"],
@@ -50,14 +44,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
                 compal_config,
                 lambda modem: modem["uptime"].split(":", 1)[0],
                 "mdi:timer",
-            ),
-            TelephoneLineSensor(
-                compal_config,
-                0,
-            ),
-            TelephoneLineSensor(
-                compal_config,
-                1,
             ),
         ]
     )
@@ -131,62 +117,3 @@ class ModemSensor(Entity):
     @property
     def icon(self):
         return self._icon
-
-
-class TelephoneLineSensor(Entity):
-    """Representation of a sensor."""
-
-    def __init__(self, compal_config, line_index):
-        """Initialize the sensor."""
-        self._compal_config = compal_config
-        self._line_index = line_index
-        self._state = self.get_state()
-        self._on_hook = self.get_on_hook()
-
-    def get_state(self):
-        return self._compal_config.current_modem_state["telephone_line"][
-            self._line_index
-        ]["mta_state"]
-
-    def get_on_hook(self):
-        return self._compal_config.current_modem_state["telephone_line"][
-            self._line_index
-        ]["on_hook"]
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return (
-            "Compal Wifi Modem Telephone Line "
-            + self._compal_config.current_modem_state["telephone_line"][
-                self._line_index
-            ]["line_number"]
-        )
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    def update(self):
-        """Fetch new state data for the sensor.
-        This is the only method that should fetch new data for Home Assistant.
-        """
-        self._state = self.get_state()
-        self._on_hook = self.get_on_hook()
-
-    @property
-    def icon(self):
-        """Return the icon to use for the valve."""
-        return (
-            "mdi:phone-off-outline"
-            if self._state != "ready"
-            else "mdi:phone-hangup"
-            if self._on_hook
-            else "mdi:phone-in-talk"
-        )
-
-    @property
-    def device_state_attributes(self):
-        """Return device specific state attributes."""
-        return {"on_hook": self._on_hook}

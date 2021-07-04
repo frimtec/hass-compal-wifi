@@ -66,35 +66,40 @@ class WifiSwitch:
 
 
 def switch_wifi(wifi_switch: WifiSwitch, state, band):
+    compal_config = wifi_switch.config()
     wifi_switch.set_processing_state("on")
 
-    def switch_wifi_blocking(
-        semaphore, _host, _password, _state, _band, _guest, _pause
-    ):
-        semaphore.acquire()
+    def switch_wifi_blocking():
+        compal_config.semaphore.acquire()
         enable_guest = False
-        if _state == Switch.ON:
-            enable_guest = _guest
+        if state == Switch.ON:
+            enable_guest = compal_config.guest
         try:
-            Commands.switch(_host, _password, _state, _band, enable_guest, _pause)
+            Commands.switch(
+                compal_config.host,
+                compal_config.password,
+                state,
+                band,
+                enable_guest,
+                compal_config.pause,
+            )
             wifi_switch.set_processing_state("off")
         except:
             wifi_switch.set_processing_state("error")
         finally:
-            semaphore.release()
+            try:
+                compal_config.current_modem_state = Commands.status(
+                    compal_config.host, compal_config.password
+                )
+                compal_config.last_update = datetime.now()
+                compal_config.update_state = "ok"
+            except:
+                compal_config.update_state = "error"
+            finally:
+                compal_config.semaphore.release()
 
-    config = wifi_switch.config()
     threading.Thread(
         target=switch_wifi_blocking,
-        args=(
-            config.semaphore,
-            config.host,
-            config.password,
-            state,
-            band,
-            config.guest,
-            config.pause,
-        ),
     ).start()
 
 
