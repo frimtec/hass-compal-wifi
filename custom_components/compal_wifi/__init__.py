@@ -22,6 +22,25 @@ ATTR_RADIO = "radio"
 DEFAULT_RADIO = "all"
 
 
+def modem_status(compal_config):
+    def modem_status_blocking():
+        compal_config.semaphore.acquire()
+        try:
+            compal_config.current_modem_state = Commands.status(
+                compal_config.host, compal_config.password
+            )
+            compal_config.last_update = datetime.now()
+            compal_config.update_state = "ok"
+        except:
+            compal_config.update_state = "error"
+        finally:
+            compal_config.semaphore.release()
+
+    threading.Thread(
+        target=modem_status_blocking,
+    ).start()
+
+
 def modem_reboot(compal_config):
     def modem_reboot_blocking():
         compal_config.semaphore.acquire()
@@ -65,7 +84,11 @@ def setup(hass, config):
     def handle_reboot(call):
         modem_reboot(compal_config)
 
+    def handle_poll_now(call):
+        modem_status(compal_config)
+
     hass.services.register(DOMAIN, "reboot", handle_reboot)
+    hass.services.register(DOMAIN, "poll_now", handle_poll_now)
     return True
 
 
@@ -80,4 +103,5 @@ class CompalConfig:
         self.polling_interval = polling_interval
         self.current_modem_state = current_modem_state
         self.last_update = datetime.now()
+        self.update_state = "ok"
         self.semaphore = threading.Semaphore()

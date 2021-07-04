@@ -4,10 +4,12 @@
 [![Build](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml)
 [![Deploy release](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml)
 
-![Icon](images/icon-readme.png) ![WiFi switches!](images/compal-wifi.png)
+![Icon](images/icon-readme.png)
 
 Home Assistant component to switch WiFi of the modem Compal CH7465LG on or off.
-The component is tested with the modem firmware version ```CH7465LG-NCIP-6.15.30-1p3-1-NOSH```.
+The component is tested with the modem firmware version ```NCIP-6.15.30-1p3-1-NOSH```.
+
+![WiFi switches!](images/compal-wifi.png)
 
 This component is not official, developed, supported or endorsed by Compal.
 
@@ -68,11 +70,12 @@ The componet offers various sensors:
 
 Entity | Description
 ---- | -----------
+switch.compal.wifi.modem.last.poll | Timestamp of last status poll
+switch.compal.wifi.modem.status | Modem status
 switch.compal.wifi.modem.model | Modem model
 switch.compal.wifi.modem.hardware Version | Hardware version
 switch.compal.wifi.modem.software Version | Software version
 switch.compal.wifi.modem.operator | Modem operator
-switch.compal.wifi.modem.status | Modem status
 switch.compal.wifi.modem.uptime | Modem uptime
 switch.compal.wifi.modem.telephone.line.1 | State of telephone line 1
 switch.compal.wifi.modem.telephone.line.2 | State of telephone line 2
@@ -82,7 +85,8 @@ The componet offers the following services:
 
 Name | Description
 ---- | -----------
-compal_wifi.reboot | Reboots the modem
+compal_wifi.poll_now | Polls the status of the modem immediatly.
+compal_wifi.reboot | Reboots the modem.
 
 ## Integration
 The integration with the compal modem is done using [compal-wifi-switch](https://github.com/frimtec/compal-wifi-switch).  
