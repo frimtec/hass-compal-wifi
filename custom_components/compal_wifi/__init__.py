@@ -1,7 +1,6 @@
 """The Compal WiFi component."""
 import threading
 from datetime import datetime
-from datetime import timedelta
 
 from compal_wifi_switch import Commands
 

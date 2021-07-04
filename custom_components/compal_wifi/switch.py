@@ -1,6 +1,5 @@
 """Support for WiFi switches using Compal modem."""
 import threading
-
 from datetime import datetime
 
 from homeassistant.helpers.entity import ToggleEntity
@@ -74,6 +73,7 @@ def switch_wifi(wifi_switch: WifiSwitch, state, band):
         enable_guest = False
         if state == Switch.ON:
             enable_guest = compal_config.guest
+        new_processing_state = None
         try:
             Commands.switch(
                 compal_config.host,
@@ -83,9 +83,9 @@ def switch_wifi(wifi_switch: WifiSwitch, state, band):
                 enable_guest,
                 compal_config.pause,
             )
-            wifi_switch.set_processing_state("off")
+            new_processing_state = "off"
         except:
-            wifi_switch.set_processing_state("error")
+            new_processing_state = "error"
         finally:
             try:
                 compal_config.current_modem_state = Commands.status(
@@ -96,6 +96,7 @@ def switch_wifi(wifi_switch: WifiSwitch, state, band):
             except:
                 compal_config.update_state = "error"
             finally:
+                wifi_switch.set_processing_state(new_processing_state)
                 compal_config.semaphore.release()
 
     threading.Thread(
@@ -112,7 +113,6 @@ class CompalWifiSwitch(ToggleEntity, WifiSwitch):
         self._name = f"wifi.{radio}"
         self._state = initial_state
         self._switch_progress = "off"
-        self._last_change_time = datetime.now()
 
     def set_processing_state(self, state):
         self._switch_progress = state
@@ -131,23 +131,21 @@ class CompalWifiSwitch(ToggleEntity, WifiSwitch):
     @property
     def is_on(self):
         """Return the state of the entity."""
-        if self._config.last_update > self._last_change_time:
-            wifi_state = extract_wifi_state(self._config.current_modem_state)
-            if wifi_state[self._radio.value] != self._state:
-                self._state = wifi_state[self._radio.value]
+        if self._switch_progress != "on":
+            self._state = extract_wifi_state(self._config.current_modem_state)[
+                self._radio.value
+            ]
         return self._state
 
     def turn_on(self, **kwargs):
         """Turn the device on."""
         switch_wifi(self, Switch.ON, self._radio)
         self._state = True
-        self._last_change_time = datetime.now()
 
     def turn_off(self, **kwargs):
         """Turn the device off."""
         switch_wifi(self, Switch.OFF, self._radio)
         self._state = False
-        self._last_change_time = datetime.now()
 
     @property
     def device_state_attributes(self):
