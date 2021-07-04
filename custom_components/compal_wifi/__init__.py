@@ -50,9 +50,6 @@ def modem_reboot(compal_config):
         except:
             return False
         finally:
-            compal_config.last_update = compal_config.last_update - timedelta(
-                seconds=compal_config.polling_interval
-            )
             compal_config.semaphore.release()
 
     threading.Thread(
@@ -79,6 +76,7 @@ def setup(hass, config):
     hass.data[DOMAIN] = compal_config
 
     hass.helpers.discovery.load_platform("sensor", DOMAIN, {}, config)
+    hass.helpers.discovery.load_platform("binary_sensor", DOMAIN, {}, config)
     hass.helpers.discovery.load_platform("switch", DOMAIN, {}, config)
 
     def handle_reboot(call):

@@ -65,20 +65,21 @@ Name | Values | Description
 `state` | `on` or `off` | Switch state.
 `switch_progress` | `on`, `off` or `error` | Whether a swich change is in progress or not or `error` if the last switch operation was faulty.
 
-### Sensor
+### Sensor & Binary sensor 
 The componet offers various sensors:
 
 Entity | Description
 ---- | -----------
-switch.compal.wifi.modem.last.poll | Timestamp of last status poll
-switch.compal.wifi.modem.status | Modem status
-switch.compal.wifi.modem.model | Modem model
-switch.compal.wifi.modem.hardware Version | Hardware version
-switch.compal.wifi.modem.software Version | Software version
-switch.compal.wifi.modem.operator | Modem operator
-switch.compal.wifi.modem.uptime | Modem uptime
-switch.compal.wifi.modem.telephone.line.1 | State of telephone line 1
-switch.compal.wifi.modem.telephone.line.2 | State of telephone line 2
+binary_sensor.compal_wifi_modem_guest_wifi | Guest Wifi state
+binary_sensor.compal_wifi_modem_internet_connectivity | Modem internet connectivity state
+binary_sensor.compal_wifi_modem_telephone_line_1 | Telephone line 1 state
+binary_sensor.compal_wifi_modem_telephone_line_2 | Telephone line 2 state
+sensor.compal_wifi_modem_last_poll | Timestamp of last status poll
+sensor.compal_wifi_modem_model | Modem model
+sensor.compal_wifi_modem_hardware_version | Hardware version
+sensor.compal_wifi_modem_software_version | Software version
+sensor.compal_wifi_modem_operator | Modem operator
+sensor.compal_wifi_modem_uptime | Modem uptime
 
 ## Services
 The componet offers the following services:
