@@ -7,7 +7,10 @@
 ![Icon](images/icon-readme.png)
 
 Home Assistant component to switch WiFi of the modem Compal CH7465LG on or off.
-The component is tested with the modem firmware version ```NCIP-6.15.30-1p3-1-NOSH``` and ```NCIP-6.15.30-1p6-NOSH```.
+The component is tested with the following modem firmware versions:
+* ```NCIP-6.15.30-1p3-1-NOSH```
+* ```NCIP-6.15.30-1p6-NOSH```
+*  ```NCIP-6.15.31p1-NOSH```
 
 ![WiFi switches!](images/compal-wifi.png)
 
