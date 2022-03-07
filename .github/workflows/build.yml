@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Upload zip
         uses: actions/upload-artifact@v2
@@ -29,7 +29,7 @@ jobs:
     name: Python code format check
     runs-on: ubuntu-latest
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v3"
       - name: Black code format check
         uses: lgeiger/black-action@master
         with:
@@ -40,7 +40,7 @@ jobs:
     needs: [black]
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v3"
       - uses: home-assistant/actions/hassfest@master
 
   hacs:
@@ -48,7 +48,7 @@ jobs:
     needs: [black]
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v3"
       - name: HACS validation
         uses: "hacs/action@main"
         with:
