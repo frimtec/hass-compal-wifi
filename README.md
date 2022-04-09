@@ -1,8 +1,11 @@
 # Compal WiFi integration for Home Assistant
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+[![hacs_badge][hacs-shield]][hacs]
+[![License][license-shield]][license]
 
-[![Build](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml)
-[![Deploy release](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml/badge.svg)](https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml)
+![Project Maintenance][maintenance-shield]
+
+[![Build Status][build-status-shield]][build-status]
+[![Deploy Status][deploy-status-shield]][deploy-status]
 
 ![Icon](images/icon-readme.png)
 
@@ -21,7 +24,7 @@ This component is not official, developed, supported or endorsed by Compal.
 1. Using the tool of choice to open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory there, you need to create it.
 3. Create an empty directory `compal_wifi` inside the directory `custom_components`.
-4. Download the ZIP archive `compal_wifi.zip` from the [latest release assets](https://github.com/frimtec/hass-compal-wifi/releases/latest).   
+4. Download the ZIP archive `compal_wifi.zip` from the [latest release assets][latest-release].   
 5. Extract the downladed ZIP archive to the directiry `custom_components/compal_wifi`.
 6. Move on to the configuration in the file `configuration.yaml`.
 7. Restart Home Assistant.
@@ -93,4 +96,16 @@ compal_wifi.poll_now | Polls the status of the modem immediatly.
 compal_wifi.reboot | Reboots the modem.
 
 ## Integration
-The integration with the compal modem is done using [compal-wifi-switch](https://github.com/frimtec/compal-wifi-switch).  
+The integration with the compal modem is done using [compal-wifi-switch][compal-wifi-switch].  
+
+[hacs-shield]: https://img.shields.io/badge/HACS-Default-orange.svg
+[hacs]: https://github.com/custom-components/hacs
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
+[license-shield]: https://img.shields.io/github/license/frimtec/hass-compal-wifi.svg
+[license]: https://opensource.org/licenses/Apache-2.0
+[build-status-shield]: https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml/badge.svg
+[build-status]: https://github.com/frimtec/hass-compal-wifi/actions/workflows/build.yml
+[deploy-status-shield]: https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml/badge.svg
+[deploy-status]: https://github.com/frimtec/hass-compal-wifi/actions/workflows/deploy_release.yml
+[latest-release]: https://github.com/frimtec/hass-compal-wifi/releases/latest
+[compal-wifi-switch]: https://github.com/frimtec/compal-wifi-switch
