@@ -99,7 +99,7 @@ compal_wifi.reboot | Reboots the modem.
 The integration with the compal modem is done using [compal-wifi-switch][compal-wifi-switch].  
 
 [hacs-shield]: https://img.shields.io/badge/HACS-Default-orange.svg
-[hacs]: https://github.com/custom-components/hacs
+[hacs]: https://github.com/hacs/integration
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
 [license-shield]: https://img.shields.io/github/license/frimtec/hass-compal-wifi.svg
 [license]: https://opensource.org/licenses/Apache-2.0
