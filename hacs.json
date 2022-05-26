@@ -1,7 +1,6 @@
 {
   "name": "Compal WiFi",
   "country": "CH",
-  "domains": ["switch"],
   "zip_release": true,
   "filename": "compal_wifi.zip",
   "render_readme": true
