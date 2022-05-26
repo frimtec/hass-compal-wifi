@@ -50,6 +50,6 @@ jobs:
     steps:
       - uses: "actions/checkout@v3"
       - name: HACS validation
-        uses: "hacs/action@main"
+        uses: "hacs/action@21.12.1"
         with:
           category: "integration"
