@@ -8,4 +8,4 @@ poll_now:
   # Service name as shown in UI
   name: Poll Now
   # Description of the service
-  description: Polls the status of the modem immediatly.
+  description: Polls the status of the modem immediately.
