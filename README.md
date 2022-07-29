@@ -48,8 +48,8 @@ compal_wifi:
 | `host`             | `string` | `True`   | The hostname or IP address of your compal modem, e.g., 192.168.0.1. |
 | `password`         | `string` | `True`   | The password for your modems administration account.                |
 | `guest`            | `bool`   | `False`  | Enable guest network when switching ON WIFI.                        |
-| `pause`            | `int`    | `False`  | Number of seconds to wait between modem changes (default 60s).      |
-| `polling_interval` | `int`    | `False`  | Number of seconds to poll modem state (default 3600s - 1h).         |
+| `pause`            | `int`    | `False`  | Number of seconds to wait between modem changes (default 70s).      |
+| `polling_interval` | `int`    | `False`  | Number of seconds to poll modem state (default 900s - 15m).         |
 
 ## Platforms
 

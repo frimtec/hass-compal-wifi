@@ -6,16 +6,9 @@ from homeassistant.helpers.entity import ToggleEntity
 
 from compal_wifi_switch import Switch, Band, Commands
 
-DOMAIN = "compal_wifi"
-
-CONF_PAUSE = "pause"
-DEFAULT_PAUSE = 60
-
-CONF_GUEST = "guest"
-DEFAULT_GUEST = False
-
-ATTR_RADIO = "radio"
-DEFAULT_RADIO = "all"
+from .const import (
+    DOMAIN,
+)
 
 
 def extract_wifi_state(status):
