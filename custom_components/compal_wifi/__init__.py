@@ -9,13 +9,13 @@ from homeassistant.const import CONF_HOST, CONF_PASSWORD
 DOMAIN = "compal_wifi"
 
 CONF_PAUSE = "pause"
-DEFAULT_PAUSE = 60
+DEFAULT_PAUSE = 70
 
 CONF_GUEST = "guest"
 DEFAULT_GUEST = False
 
 CONF_POLLING_INTERVAL = "polling_interval"
-DEFAULT_POLLING_INTERVAL = 60 * 60
+DEFAULT_POLLING_INTERVAL = 15 * 60
 
 ATTR_RADIO = "radio"
 DEFAULT_RADIO = "all"

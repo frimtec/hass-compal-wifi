@@ -8,15 +8,6 @@ from compal_wifi_switch import Switch, Band, Commands
 
 DOMAIN = "compal_wifi"
 
-CONF_PAUSE = "pause"
-DEFAULT_PAUSE = 60
-
-CONF_GUEST = "guest"
-DEFAULT_GUEST = False
-
-ATTR_RADIO = "radio"
-DEFAULT_RADIO = "all"
-
 
 def extract_wifi_state(status):
     states = {}
