@@ -6,7 +6,9 @@ from homeassistant.helpers.entity import ToggleEntity
 
 from compal_wifi_switch import Switch, Band, Commands
 
-DOMAIN = "compal_wifi"
+from .const import (
+    DOMAIN,
+)
 
 
 def extract_wifi_state(status):

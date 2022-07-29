@@ -6,7 +6,9 @@ from compal_wifi_switch import Commands
 
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
 
-DOMAIN = "compal_wifi"
+from .const import (
+    DOMAIN,
+)
 
 CONF_PAUSE = "pause"
 DEFAULT_PAUSE = 70
