@@ -14,7 +14,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
 
   black:
     name: Python code format check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: "actions/checkout@v3"
       - name: Black code format check
@@ -38,7 +38,7 @@ jobs:
   hassfest:
     name: Hassfest validation
     needs: [black]
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-22.04
     steps:
       - uses: "actions/checkout@v3"
       - uses: home-assistant/actions/hassfest@master
@@ -46,7 +46,7 @@ jobs:
   hacs:
     name: HACS validation
     needs: [black]
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-22.04
     steps:
       - uses: "actions/checkout@v3"
       - name: HACS validation
