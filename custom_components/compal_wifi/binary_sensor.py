@@ -1,7 +1,7 @@
 """Platform for binary_sensor integration."""
 
 from homeassistant.components.binary_sensor import BinarySensorEntity
-from homeassistant.components.binary_sensor import DEVICE_CLASS_CONNECTIVITY
+from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 
 from . import DOMAIN
 
@@ -76,7 +76,7 @@ class ModemConnectivityBinarySensor(BinarySensorEntity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_CONNECTIVITY
+        return BinarySensorDeviceClass.CONNECTIVITY
 
     @property
     def device_state_attributes(self):
@@ -146,4 +146,4 @@ class TelephoneLineBinarySensor(BinarySensorEntity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_CONNECTIVITY
+        return BinarySensorDeviceClass.CONNECTIVITY

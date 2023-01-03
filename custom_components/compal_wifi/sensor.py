@@ -2,7 +2,7 @@
 from datetime import datetime
 from datetime import timedelta
 
-from homeassistant.const import DEVICE_CLASS_TIMESTAMP
+from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.helpers.entity import Entity
 
 from . import DOMAIN, modem_status
@@ -82,7 +82,7 @@ class PollingSensor(Entity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_TIMESTAMP
+        return SensorDeviceClass.TIMESTAMP
 
 
 class ModemSensor(Entity):
