@@ -1,15 +1,15 @@
 {
   "domain": "compal_wifi",
   "name": "Compal WiFi",
+  "codeowners": [
+    "@frimtec"
+  ],
   "documentation": "https://github.com/frimtec/hass-compal-wifi",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/frimtec/hass-compal-wifi/issues",
   "requirements": [
     "compal-wifi-switch==1.2.2",
     "compal>=0.4.0"
   ],
-  "issue_tracker": "https://github.com/frimtec/hass-compal-wifi/issues",
-  "codeowners": [
-    "@frimtec"
-  ],
-  "iot_class": "local_polling",
   "version": "0.0.0"
 }
