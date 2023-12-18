@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Upload zip
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compal_wifi
           path: ./custom_components/compal_wifi
