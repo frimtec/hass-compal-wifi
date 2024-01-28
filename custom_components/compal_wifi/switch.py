@@ -1,4 +1,5 @@
 """Support for WiFi switches using Compal modem."""
+
 import threading
 from datetime import datetime
 

@@ -1,4 +1,5 @@
 """The Compal WiFi component."""
+
 import threading
 from datetime import datetime
 
