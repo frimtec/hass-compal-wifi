@@ -1,4 +1,5 @@
 """Platform for sensor integration."""
+
 from datetime import datetime
 from datetime import timedelta
 

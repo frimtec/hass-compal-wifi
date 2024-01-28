@@ -131,9 +131,7 @@ class TelephoneLineBinarySensor(BinarySensorEntity):
         return (
             "mdi:phone-off-outline"
             if self._state != "ready"
-            else "mdi:phone-hangup"
-            if self._on_hook
-            else "mdi:phone-in-talk"
+            else "mdi:phone-hangup" if self._on_hook else "mdi:phone-in-talk"
         )
 
     @property
