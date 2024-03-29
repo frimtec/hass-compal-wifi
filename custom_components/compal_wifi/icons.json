@@ -1,0 +1,6 @@
+{
+  "services": {
+    "reboot": "mdi:restart",
+    "poll_now": "mdi:update"
+  }
+}
