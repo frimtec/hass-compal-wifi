@@ -17,48 +17,38 @@ class Commands:
                 "operator_id": "LIBERTYGLOBAL",
                 "network_mode": "IPv4",
                 "status": "unknown",
-                "uptime": "50day(s)0h:12m:28s"
+                "uptime": "50day(s)0h:12m:28s",
             },
             "wifi": [
-                {
-                    "radio": '2g',
-                    "enabled": True,
-                    "ssid": "WIFI-2G",
-                    "hidden": False
-                },
-                {
-                    "radio": '5g',
-                    "enabled": False,
-                    "ssid": "WIFI-5G",
-                    "hidden": False
-                }
+                {"radio": "2g", "enabled": True, "ssid": "WIFI-2G", "hidden": False},
+                {"radio": "5g", "enabled": False, "ssid": "WIFI-5G", "hidden": False},
             ],
             "wifi_guest": [
                 {
                     "radio": "2g",
-                    "enabled": 'on',
+                    "enabled": "on",
                     "mac": "**:**:**:**:**:**",
-                    "ssid": 'GUEST',
-                    "hidden": False
+                    "ssid": "GUEST",
+                    "hidden": False,
                 },
                 {
                     "radio": "5g",
-                    "enabled": 'off',
-                    "mac": '',
-                    "ssid": 'GUEST',
-                    "hidden": False
+                    "enabled": "off",
+                    "mac": "",
+                    "ssid": "GUEST",
+                    "hidden": False,
                 },
             ],
             "telephone_line": [
                 {
-                    "line_number": '1',
-                    "provisioning_state": 'on',
+                    "line_number": "1",
+                    "provisioning_state": "on",
                     "on_hook": "on_hook",
                     "mta_state": "",
                 },
                 {
-                    "line_number": '2',
-                    "provisioning_state": 'off',
+                    "line_number": "2",
+                    "provisioning_state": "off",
                     "on_hook": "on_hook",
                     "mta_state": "",
                 },
