@@ -5,6 +5,7 @@ from datetime import datetime
 
 from compal_wifi_switch import Commands
 
+from homeassistant.helpers.discovery import load_platform
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
 
 from .const import (
@@ -77,9 +78,9 @@ def setup(hass, config):
     # Data that you want to share with your platforms
     hass.data[DOMAIN] = compal_config
 
-    hass.helpers.discovery.load_platform("sensor", DOMAIN, {}, config)
-    hass.helpers.discovery.load_platform("binary_sensor", DOMAIN, {}, config)
-    hass.helpers.discovery.load_platform("switch", DOMAIN, {}, config)
+    load_platform(hass, "sensor", DOMAIN, {}, config)
+    load_platform(hass, "binary_sensor", DOMAIN, {}, config)
+    load_platform(hass, "switch", DOMAIN, {}, config)
 
     def handle_reboot(call):
         modem_reboot(compal_config)
