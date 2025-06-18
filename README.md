@@ -48,6 +48,7 @@ compal_wifi:
     host: 192.168.1.1
     password: YOUR_PASSWORD
 ```
+Use host `0.0.0.0` for testing with a virtual modem.
 
 ### Configuration options
 

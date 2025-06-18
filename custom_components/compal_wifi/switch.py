@@ -5,7 +5,7 @@ from datetime import datetime
 
 from homeassistant.helpers.entity import ToggleEntity
 
-from compal_wifi_switch import Switch, Band, Commands
+from compal_wifi_switch import Switch, Band
 
 from .const import (
     DOMAIN,
@@ -69,7 +69,7 @@ def switch_wifi(wifi_switch: WifiSwitch, state, band):
             enable_guest = compal_config.guest
         new_processing_state = None
         try:
-            Commands.switch(
+            compal_config.modem.switch(
                 compal_config.host,
                 compal_config.password,
                 state,
@@ -82,7 +82,7 @@ def switch_wifi(wifi_switch: WifiSwitch, state, band):
             new_processing_state = "error"
         finally:
             try:
-                compal_config.current_modem_state = Commands.status(
+                compal_config.current_modem_state = compal_config.modem.status(
                     compal_config.host, compal_config.password
                 )
                 compal_config.last_update = datetime.now()
