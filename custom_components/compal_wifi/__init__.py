@@ -1,16 +1,21 @@
 """The Compal WiFi component."""
 
+import logging
 import threading
 from datetime import datetime
 
-from compal_wifi_switch import Commands
+from compal_wifi_switch import Commands as RealModem
+from .modem_simulator import Commands as VirtualModem
 
 from homeassistant.helpers.discovery import load_platform
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
 
+
 from .const import (
     DOMAIN,
 )
+
+_LOGGER = logging.getLogger(__name__)
 
 CONF_PAUSE = "pause"
 DEFAULT_PAUSE = 70
@@ -29,7 +34,7 @@ def modem_status(compal_config):
     def modem_status_blocking():
         compal_config.semaphore.acquire()
         try:
-            compal_config.current_modem_state = Commands.status(
+            compal_config.current_modem_state = compal_config.modem.status(
                 compal_config.host, compal_config.password
             )
             compal_config.last_update = datetime.now()
@@ -48,7 +53,7 @@ def modem_reboot(compal_config):
     def modem_reboot_blocking():
         compal_config.semaphore.acquire()
         try:
-            Commands.reboot(compal_config.host, compal_config.password)
+            compal_config.modem.reboot(compal_config.host, compal_config.password)
             return True
         except:
             return False
@@ -64,15 +69,24 @@ def setup(hass, config):
     """Your controller/hub specific code."""
 
     domain_config = config[DOMAIN]
-    states = Commands.status(domain_config[CONF_HOST], domain_config[CONF_PASSWORD])
+
+    host = domain_config[CONF_HOST]
+    password = domain_config[CONF_PASSWORD]
+    modem = RealModem
+    if host == "0.0.0.0":
+        modem = VirtualModem
+        _LOGGER.warning("Using virtual modem for testing")
+
+    states = modem.status(host, password)
 
     compal_config = CompalConfig(
-        domain_config[CONF_HOST],
-        domain_config[CONF_PASSWORD],
+        host,
+        password,
         domain_config.get(CONF_PAUSE, DEFAULT_PAUSE),
         domain_config.get(CONF_GUEST, DEFAULT_GUEST),
         domain_config.get(CONF_POLLING_INTERVAL, DEFAULT_POLLING_INTERVAL),
         states,
+        modem,
     )
 
     # Data that you want to share with your platforms
@@ -95,7 +109,7 @@ def setup(hass, config):
 
 class CompalConfig:
     def __init__(
-        self, host, password, pause, guest, polling_interval, current_modem_state
+        self, host, password, pause, guest, polling_interval, current_modem_state, modem
     ):
         self.host = host
         self.password = password
@@ -106,3 +120,4 @@ class CompalConfig:
         self.last_update = datetime.now()
         self.update_state = "ok"
         self.semaphore = threading.Semaphore()
+        self.modem = modem

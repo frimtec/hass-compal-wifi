@@ -1,12 +1,23 @@
 import logging
+import time
+
+from compal_wifi_switch import Switch, Band
 
 _LOGGER = logging.getLogger(__name__)
 
 
 class Commands:
 
+    band_states = {
+        Band.BAND_2G: True,
+        Band.BAND_5G: False,
+        Band.ALL: False,
+    }
+
     @staticmethod
     def status(host, password):
+        _LOGGER.info("Read status")
+        time.sleep(1)
         return {
             "modem": {
                 "model": "CH7465LG",
@@ -20,21 +31,31 @@ class Commands:
                 "uptime": "50day(s)0h:12m:28s",
             },
             "wifi": [
-                {"radio": "2g", "enabled": True, "ssid": "WIFI-2G", "hidden": False},
-                {"radio": "5g", "enabled": False, "ssid": "WIFI-5G", "hidden": False},
+                {
+                    "radio": "2g",
+                    "enabled": Commands.band_states[Band.BAND_2G],
+                    "ssid": "WIFI-2G",
+                    "hidden": False,
+                },
+                {
+                    "radio": "5g",
+                    "enabled": Commands.band_states[Band.BAND_5G],
+                    "ssid": "WIFI-5G",
+                    "hidden": False,
+                },
             ],
             "wifi_guest": [
                 {
                     "radio": "2g",
-                    "enabled": "on",
+                    "enabled": Commands.band_states[Band.BAND_2G],
                     "mac": "**:**:**:**:**:**",
                     "ssid": "GUEST",
                     "hidden": False,
                 },
                 {
                     "radio": "5g",
-                    "enabled": "off",
-                    "mac": "",
+                    "enabled": Commands.band_states[Band.BAND_5G],
+                    "mac": "**:**:**:**:**:**",
                     "ssid": "GUEST",
                     "hidden": False,
                 },
@@ -57,10 +78,15 @@ class Commands:
 
     @staticmethod
     def switch(host, password, state, band, guest, pause, verbose=False):
-        _LOGGER.info("WIFI band %s switched to %s", band, state)
-        return
+        _LOGGER.info("Switch WIFI band %s to %s (guest=%d)", band, state, guest)
+        time.sleep(pause)
+        if band == Band.ALL:
+            Commands.band_states[Band.BAND_2G] = state
+            Commands.band_states[Band.BAND_5G] = state
+        else:
+            Commands.band_states[Band.band] = state
 
     @staticmethod
     def reboot(host, password):
-        _LOGGER.info("Modem reset")
-        return
+        _LOGGER.info("Modem rebooted")
+        time.sleep(20)
