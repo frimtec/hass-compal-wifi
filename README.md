@@ -32,6 +32,13 @@ This component is not official, developed, supported or endorsed by Compal.
 
 ## Installation
 
+### HACS (recommended)
+
+You can install this component through [HACS](https://hacs.xyz/) to easily receive updates. Once HACS is installed, click this link:
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=frimtec&repository=/hass-compal-wifi)
+
+### Manual
+
 1. Using the tool of choice to open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory there, you need to create it.
 3. Create an empty directory `compal_wifi` inside the directory `custom_components`.
@@ -109,7 +116,7 @@ The component offers the following services:
 ## Integration
 The integration with the compal modem is done using [compal-wifi-switch][compal-wifi-switch].  
 
-[hacs-shield]: https://img.shields.io/badge/HACS-Default-41BDF5.svg
+[hacs-shield]: https://img.shields.io/badge/HACS-Default-blue.svg
 [hacs]: https://github.com/hacs/integration
 [downloads-latest-shield]:https://img.shields.io/github/downloads/frimtec/hass-compal-wifi/latest/total
 [downloads-shield]:https://img.shields.io/github/downloads/frimtec/hass-compal-wifi/total
