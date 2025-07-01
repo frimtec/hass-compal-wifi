@@ -35,7 +35,7 @@ This component is not official, developed, supported or endorsed by Compal.
 ### HACS (recommended)
 
 You can install this component through [HACS](https://hacs.xyz/) to easily receive updates. Once HACS is installed, click this link:
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=frimtec&repository=/hass-compal-wifi)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=frimtec&repository=hass-compal-wifi)
 
 ### Manual
 
